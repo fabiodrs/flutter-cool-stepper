@@ -24,6 +24,18 @@ class CoolStepperConfig {
   /// This is the background color of the header
   final Color headerColor;
 
+  /// This is the background color of the back button
+  final Color backButtonColor;
+
+  /// This is the background color of the back button
+  final Color backTextColor;
+
+  /// This is the background color of the next button
+  final Color nextButtonColor;
+
+  /// This is the background color of the next button
+  final Color nextTextColor;
+
   /// This is the color of the icon
   ///
   /// [This does not apply when icon is set]
@@ -59,6 +71,10 @@ class CoolStepperConfig {
     this.stepText,
     this.ofText,
     this.headerColor,
+    this.backButtonColor,
+    this.nextButtonColor,
+    this.backTextColor,
+    this.nextTextColor,
     this.iconColor,
     this.icon,
     this.titleTextStyle,

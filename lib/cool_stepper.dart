@@ -3,6 +3,8 @@ library cool_stepper;
 export 'package:cool_stepper/src/models/cool_step.dart';
 export 'package:cool_stepper/src/models/cool_stepper_config.dart';
 
+import 'dart:io';
+
 import 'package:cool_stepper/src/models/cool_step.dart';
 import 'package:cool_stepper/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper/src/widgets/cool_stepper_view.dart';
@@ -166,6 +168,7 @@ class _CoolStepperState extends State<CoolStepper> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           FlatButton(
+            color: widget.config.backButtonColor,
             onPressed: onStepBack,
             child: Text(
               getPrevLabel(),
@@ -174,11 +177,12 @@ class _CoolStepperState extends State<CoolStepper> {
           ),
           counter,
           FlatButton(
+            color: widget.config.nextButtonColor,
             onPressed: onStepNext,
             child: Text(
               getNextLabel(),
               style: TextStyle(
-                color: Colors.green,
+                color: Colors.white,
               ),
             ),
           ),

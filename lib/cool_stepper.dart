@@ -8,6 +8,7 @@ import 'dart:io';
 import 'package:cool_stepper/src/models/cool_step.dart';
 import 'package:cool_stepper/src/models/cool_stepper_config.dart';
 import 'package:cool_stepper/src/widgets/cool_stepper_view.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 /// CoolStepper
@@ -114,12 +115,14 @@ class _CoolStepperState extends State<CoolStepper> {
   Widget build(BuildContext context) {
     final content = Expanded(
       child: GestureDetector(
-          onHorizontalDragUpdate: (details) {
+        dragStartBehavior: DragStartBehavior.start,
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragStart: (details) {
             // Note: Sensitivity is integer used when you don't want to mess up vertical drag
-            if (details.delta.dx > 0) {
+            if (details.globalPosition.dx > 0) {
               // Right Swipe
               onStepBack();
-            } else if(details.delta.dx < 0){
+            } else if(details.globalPosition.dx < 0){
               //Left Swipe
               onStepNext();
             }

@@ -113,17 +113,30 @@ class _CoolStepperState extends State<CoolStepper> {
   @override
   Widget build(BuildContext context) {
     final content = Expanded(
-      child: PageView(
-        controller: _controller,
-        physics: NeverScrollableScrollPhysics(),
-        children: widget.steps.map((step) {
-          return CoolStepperView(
-            step: step,
-            contentPadding: widget.contentPadding,
-            config: widget.config,
-          );
-        }).toList(),
+      child: GestureDetector(
+          onHorizontalDragUpdate: (details) {
+            // Note: Sensitivity is integer used when you don't want to mess up vertical drag
+            if (details.delta.dx > 0) {
+              // Right Swipe
+              onStepBack();
+            } else if(details.delta.dx < 0){
+              //Left Swipe
+              onStepNext();
+            }
+          },
+        child: PageView(
+          controller: _controller,
+          physics: NeverScrollableScrollPhysics(),
+          children: widget.steps.map((step) {
+            return CoolStepperView(
+              step: step,
+              contentPadding: widget.contentPadding,
+              config: widget.config,
+            );
+          }).toList(),
+        ),
       ),
+
     );
 
     final counter = Container(
